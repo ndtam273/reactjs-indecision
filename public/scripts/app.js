@@ -26,7 +26,11 @@ var BuildItVisible = function (_React$Component) {
   _createClass(BuildItVisible, [{
     key: 'handleToogle',
     value: function handleToogle() {
-      this.setState({ visibility: !visibility });
+      this.setState(function (prveState) {
+        return {
+          visibility: !prveState.visibility
+        };
+      });
     }
   }, {
     key: 'render',

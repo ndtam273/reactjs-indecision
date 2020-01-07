@@ -3,31 +3,35 @@ class BuildItVisible extends React.Component {
     super(props);
     this.handleToogle = this.handleToogle.bind(this);
     this.state = {
-       visibility : false
+      visibility: false
     }
   }
   handleToogle() {
     this.setState(
-      {visibility : !visibility}
-    )
+      (prveState) => {
+        return {
+          visibility: !prveState.visibility
+        };
+      }
+    );
   }
   render() {
     return (
       <div>
         <h1>Visibility Toggle</h1>
         <button onClick={this.handleToogle}>
-          {this.state.visibility ? 'Hide details' : 'Show details' }
+          {this.state.visibility ? 'Hide details' : 'Show details'}
         </button>
         {this.state.visibility && (
-        <div>
-          <p>Hey. These are some details you can now see!</p>
-        </div>
-      )}
+          <div>
+            <p>Hey. These are some details you can now see!</p>
+          </div>
+        )}
       </div>
     );
   }
 }
-ReactDOM.render(<BuildItVisible /> , document.getElementById('app'));
+ReactDOM.render(<BuildItVisible />, document.getElementById('app'));
 
 // let visibility = false;
 
