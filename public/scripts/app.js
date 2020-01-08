@@ -39,8 +39,14 @@ var IndecisionApp = function (_React$Component) {
 
   }, {
     key: 'handleDeleteOption',
-    value: function handleDeleteOption(option) {
-      console.log('hdo', option);
+    value: function handleDeleteOption(optionToRemove) {
+      this.setState(function (prevState) {
+        return {
+          options: prevState.options.filter(function (option) {
+            return optionToRemove !== option;
+          })
+        };
+      });
     }
     // handle pick
 
@@ -160,7 +166,11 @@ var Option = function Option(props) {
     props.optionText,
     React.createElement(
       'button',
-      { onClick: props.handleDeleteOption },
+      {
+        onClick: function onClick(e) {
+          props.handleDeleteOption(props.optionText);
+        }
+      },
       'remove'
     )
   );
