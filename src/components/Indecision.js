@@ -3,19 +3,15 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-      this.handlePick = this.handlePick.bind(this);
-      this.handleAddOption = this.handleAddOption.bind(this);
-      this.handleDeleteOption = this.handleDeleteOption.bind(this);
-      this.state = {
+     
+      state = {
         options: []
       };
-    }
+
     // Lifecycle method
-    componentDidMount() {
+    componentDidMount()  {
       try {
         console.log('Fetching Data!');
         const json = localStorage.getItem('options');
@@ -44,13 +40,13 @@ export default class IndecisionApp extends React.Component {
       console.log('component will unmount!');
     }
     // handleDeleteOption
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
       this.setState(
         () => ({ options: [] })
       );
     }
     // handle delete one option
-    handleDeleteOption(optionToRemove) {
+    handleDeleteOption = (optionToRemove) => {
       this.setState(
         (prevState) => ({
           options: prevState.options.filter(
@@ -60,14 +56,14 @@ export default class IndecisionApp extends React.Component {
       );
     }
     // handle pick
-    handlePick() {
+    handlePick = () => {
       const randomNum = Math.floor(Math.random() * this.state.options.length);
       const option = this.state.options[randomNum];
       alert(option);
     }
   
     // handle Add Option
-    handleAddOption(option) {
+    handleAddOption = (option) => {
       if (!option) {
         return 'Enter valid value to add Item';
       } else if (this.state.options.indexOf(option) > -1) {
